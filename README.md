@@ -1,3 +1,33 @@
+# Testing (on external image, for cuda 10.2)
+
+Installation
+```
+conda create -n clutnet python=3.8
+conda activate clutnet
+conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=10.2 -c pytorch
+pip3 install opencv-python tqdm thop matplotlib
+
+# Install trilinear cpp (pytorch 1.x)
+cd trilinear_cpp
+export CUDA_HOME=PATH_TO_CUDA_LIB e.g. /data2/shaun/cuda-10.2
+python3 setup.py install
+```
+
+Running (Ensure in CLUT-Net folder)
+```
+usage: demo_clut.py [-h] --input_dir INPUT_DIR --output_dir OUTPUT_DIR [--device DEVICE] [--model MODEL]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --input_dir INPUT_DIR
+                        Path to input folder containing images
+  --output_dir OUTPUT_DIR
+                        Path to output folder
+  --device DEVICE       Device to use e.g. 'cuda:0', 'cuda:1', 'cpu'
+  --model MODEL         model configuration, n+s+w. Options: '20+05+10', '20+05+20'
+```
+
+
 # Core codes for CLUT-Net and tools for 3DLUT
 [**CLUT-Net: Learning Adaptively Compressed Representations of 3DLUTs for Lightweight Image Enhancement**](/demo/MM2022%20CLUT-Net.pdf)
 
